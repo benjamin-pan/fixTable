@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>table</title>
+	<style>
+		div {
+			margin: 300px auto;
+			width: 300px;
+			height: 300px;
+			background: #ccc;
+			overflow: auto;
+		}
+		table td,table th {
+			word-break: keep-all;
+			background: #ccc;
+		}
+		table thead {
+			color: #0f44ff;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<table class="table" id="table"></table>
+	</div>
+	<script src="fixTable.js"></script>
+	<script>
+		// create the table
+		var table=document.getElementById('table');
+		var thead=document.createElement('thead');
+		var tbody=document.createElement('tbody');
+		
+		// create thead
+		for(var i=0;i<2;i++){
+			var tr=document.createElement('tr');
+			for(var j=0;j<10;j++){
+				var text=document.createTextNode('fixThead'+i+j);
+				var td=document.createElement('td');
+				td.appendChild(text);
+				tr.appendChild(td);
+			}
+			thead.appendChild(tr);
+		}
+		table.appendChild(thead);
+
+		// create tbody
+		for(var i=0;i<20;i++){
+			var tr=document.createElement('tr');
+			for(var j=0;j<10;j++){
+				var text=document.createTextNode('td'+i+j);
+				var td=document.createElement('td');
+				td.appendChild(text);
+				tr.appendChild(td);
+			}
+			tbody.appendChild(tr);
+		}
+		table.appendChild(tbody);
+	</script>
+	<script>
+		// fix 1 line
+		// FixTable('#table');
+		// fix 2 lines
+		FixTable('#table',2);
+	</script>
+</body>
+</html>
